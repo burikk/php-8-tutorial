@@ -83,3 +83,43 @@ var_dump(array_key_exists($osVersions['windows']['nullValue'], $osVersions));
 print_r($osVersions);
 $array = [true => 'a', 1 => 'b', '1' => 'c', 1.8 => 'd', null => 'e'];//prints [1] => d [] => e
 
+//Loops
+$i = 0;
+while ($i <= 10) {
+    echo $i++;
+}
+
+$i = 0;
+do {
+    echo $i++;
+} while ($i <= 10);
+
+for ($i = 0; $i < 10; $i++) {
+    echo $i;
+}
+
+foreach ($fruits as $key => $fruit) {
+    echo $key . ': ' . $fruit . '<br/>';
+}
+
+//Switch, match
+$status = 1;
+switch ($status) { //switch ==
+    case 1:
+        echo 'status 1';
+        break;
+    case 2:
+    case 3:
+        echo 'status 3';
+        break;
+    default: //no errors when no default value here
+        echo 'default status';
+}
+$match = match ($status) { //match ===
+    1 => 'match 1',
+    2, 3 => 'match 2',
+    0 => 'match0',
+    default => 'default match', //error if not specified default value
+};
+echo $match;
+
