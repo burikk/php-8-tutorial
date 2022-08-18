@@ -1,10 +1,13 @@
 <?php
 
-require_once '../Transaction/Transaction.php';
-require_once '../AnotherTransaction/Transaction.php';
+spl_autoload_register(function ($class) {
+    $path = __DIR__ . '/../' . str_replace(['\\', 'App'], ['/', 'src'], $class) . '.php';
 
-use Transaction\Transaction;
-use AnotherTransaction\Transaction as AnotherTransaction;
+    require($path);
+});
+
+use App\Model\Transaction\Transaction;
+use App\Model\AnotherTransaction\Transaction as AnotherTransaction;
 
 //Classes & Objects
 
