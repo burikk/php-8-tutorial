@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AnotherTransaction;
+namespace App\Model\AnotherTransaction;
 
 class Transaction
 {
