@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Transaction;
+
 class Transaction
 {
     //initialize with data type for strict types

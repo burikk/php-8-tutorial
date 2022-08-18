@@ -1,6 +1,11 @@
 <?php
 
-require_once '../Transaction.php';
+require_once '../Transaction/Transaction.php';
+require_once '../AnotherTransaction/Transaction.php';
+
+use Transaction\Transaction;
+use AnotherTransaction\Transaction as AnotherTransaction;
+
 //Classes & Objects
 
 $transaction = new Transaction(100, 'Transaction 1');
@@ -15,3 +20,6 @@ $amount = $transaction2->addTax(10)
     ->applyDiscount(20)
     ->getAmount();
 var_dump($amount);
+
+$anotherTransaction = new AnotherTransaction();
+var_dump($anotherTransaction);
