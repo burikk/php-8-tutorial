@@ -123,3 +123,24 @@ $match = match ($status) { //match ===
 };
 echo $match;
 
+//Static variables
+function getValue() {
+    static $value = null;
+    if ($value === null) {
+        $value = processValue();
+    }
+
+    return $value;
+}
+
+function processValue()
+{
+    sleep(2);
+    echo 'Processing';
+    return 10;
+}
+
+echo getValue();
+echo getValue();
+echo getValue();
+
