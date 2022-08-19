@@ -1,10 +1,12 @@
 <?php
 
-spl_autoload_register(function ($class) {
-    $path = __DIR__ . '/../' . str_replace(['\\', 'App'], ['/', 'src'], $class) . '.php';
+//spl_autoload_register(function ($class) {
+//    $path = __DIR__ . '/../' . str_replace(['\\', 'App'], ['/', 'src'], $class) . '.php';
+//
+//    require($path);
+//});
 
-    require($path);
-});
+require __DIR__ . '/../vendor/autoload.php';
 
 use App\Model\Transaction\Transaction;
 use App\Model\AnotherTransaction\Transaction as AnotherTransaction;
