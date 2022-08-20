@@ -12,6 +12,10 @@ use App\Model\Toaster;
 use App\Model\Transaction\Transaction;
 use App\Model\AnotherTransaction\Transaction as AnotherTransaction;
 use App\Model\DB;
+use App\Model\Fields\Text;
+use App\Model\Fields\Boolean;
+use App\Model\Fields\Checkbox;
+use App\Model\Fields\Radio;
 
 //Classes & Objects
 
@@ -55,3 +59,16 @@ $toasterPro->addSlice('bread');
 $toasterPro->addSlice('bread'); //won't be toasted
 $toasterPro->toast();
 $toasterPro->toastBagel(); //toasterpro could also toast bagel
+
+//Abstract classes & methods
+$fields = [
+    //new Field('base field'), // abstract
+    new Text('text field'),
+    //new Boolean('boolean field'), //abstract
+    new Checkbox('checkbox field'),
+    new Radio('radio field'),
+];
+
+foreach ($fields as $field) {
+    echo $field->render() . '<br />';
+}
