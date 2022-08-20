@@ -10,6 +10,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use App\Model\Transaction\Transaction;
 use App\Model\AnotherTransaction\Transaction as AnotherTransaction;
+use App\Model\DB;
 
 //Classes & Objects
 
@@ -26,5 +27,14 @@ $amount = $transaction2->addTax(10)
     ->getAmount();
 var_dump($amount);
 
+//Static properties & Methods
 $anotherTransaction = new AnotherTransaction();
-var_dump($anotherTransaction);
+$anotherTransaction2 = new AnotherTransaction();
+$anotherTransaction3 = new AnotherTransaction();
+var_dump($anotherTransaction::$count);
+var_dump($anotherTransaction::getCount());
+
+$db = DB::getInstance([]);//echo only once, because of static
+$db = DB::getInstance([]);
+$db = DB::getInstance([]);
+$db = DB::getInstance([]);
