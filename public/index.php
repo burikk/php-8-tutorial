@@ -8,6 +8,10 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+use App\Model\CoffeeMaker\AllInOneCoffeeMaker;
+use App\Model\CoffeeMaker\CappuccinoMaker;
+use App\Model\CoffeeMaker\CoffeeMaker;
+use App\Model\CoffeeMaker\LatteMaker;
 use App\Model\CollectionAgency\CollectionAgency;
 use App\Model\CollectionAgency\DebtCollectionService;
 use App\Model\CollectionAgency\Rocky;
@@ -80,3 +84,21 @@ foreach ($fields as $field) {
 $collector = new DebtCollectionService();
 echo $collector->collectDebt(new CollectionAgency()) . PHP_EOL;
 echo $collector->collectDebt(new Rocky()) . PHP_EOL;
+
+//Traits
+$coffeeMaker = new CoffeeMaker();
+$coffeeMaker->makeCoffee();
+
+$cappuccinoMaker = new CappuccinoMaker();
+$cappuccinoMaker->makeCoffee();
+$cappuccinoMaker->makeCappuccion();
+
+$latteMaker = new LatteMaker();
+$latteMaker->makeCoffee();
+$latteMaker->makeLatte();
+
+$aioMaker = new AllInOneCoffeeMaker();
+$aioMaker->makeCoffee();
+$aioMaker->makeLatte();
+$aioMaker->makeCappuccion();
+
