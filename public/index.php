@@ -8,6 +8,7 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+use App\Model\Toaster;
 use App\Model\Transaction\Transaction;
 use App\Model\AnotherTransaction\Transaction as AnotherTransaction;
 use App\Model\DB;
@@ -38,3 +39,19 @@ $db = DB::getInstance([]);//echo only once, because of static
 $db = DB::getInstance([]);
 $db = DB::getInstance([]);
 $db = DB::getInstance([]);
+
+//Inheritance
+$toaster = new Toaster\Toaster();
+$toaster->addSlice('bread');
+$toaster->addSlice('bread');
+$toaster->addSlice('bread'); //reg toaster can toast only 2 slices
+$toaster->toast();
+
+$toasterPro = new Toaster\ToasterPro();
+$toasterPro->addSlice('bread');
+$toasterPro->addSlice('bread');
+$toasterPro->addSlice('bread');
+$toasterPro->addSlice('bread');
+$toasterPro->addSlice('bread'); //won't be toasted
+$toasterPro->toast();
+$toasterPro->toastBagel(); //toasterpro could also toast bagel
