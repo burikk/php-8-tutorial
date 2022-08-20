@@ -11,6 +11,10 @@ require __DIR__ . '/../vendor/autoload.php';
 use App\Model\Transaction\Transaction;
 use App\Model\AnotherTransaction\Transaction as AnotherTransaction;
 use App\Model\DB;
+use App\Model\Fields\Text;
+use App\Model\Fields\Boolean;
+use App\Model\Fields\Checkbox;
+use App\Model\Fields\Radio;
 
 //Classes & Objects
 
@@ -38,3 +42,16 @@ $db = DB::getInstance([]);//echo only once, because of static
 $db = DB::getInstance([]);
 $db = DB::getInstance([]);
 $db = DB::getInstance([]);
+
+//Abstract classes & methods
+$fields = [
+    //new Field('base field'), // abstract
+    new Text('text field'),
+    //new Boolean('boolean field'), //abstract
+    new Checkbox('checkbox field'),
+    new Radio('radio field'),
+];
+
+foreach ($fields as $field) {
+    echo $field->render() . '<br />';
+}
