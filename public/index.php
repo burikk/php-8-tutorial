@@ -8,6 +8,9 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+use App\Model\CollectionAgency\CollectionAgency;
+use App\Model\CollectionAgency\DebtCollectionService;
+use App\Model\CollectionAgency\Rocky;
 use App\Model\Toaster;
 use App\Model\Transaction\Transaction;
 use App\Model\AnotherTransaction\Transaction as AnotherTransaction;
@@ -72,3 +75,8 @@ $fields = [
 foreach ($fields as $field) {
     echo $field->render() . '<br />';
 }
+
+//Interfaces
+$collector = new DebtCollectionService();
+echo $collector->collectDebt(new CollectionAgency()) . PHP_EOL;
+echo $collector->collectDebt(new Rocky()) . PHP_EOL;
