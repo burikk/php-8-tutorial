@@ -23,6 +23,7 @@ use App\Model\Fields\Text;
 use App\Model\Fields\Boolean;
 use App\Model\Fields\Checkbox;
 use App\Model\Fields\Radio;
+use App\Model\Transaction\TransactionCollection;
 
 //Classes & Objects
 
@@ -102,3 +103,27 @@ $aioMaker->makeCoffee();
 $aioMaker->makeLatte();
 $aioMaker->makeCappuccion();
 
+//DateTime
+$dateTime = new DateTime();
+$dateTime->setTimezone(new DateTimeZone('Europe/Warsaw'));
+echo $dateTime->getTimezone()->getName() . ' - ' . $dateTime->format('m/d/Y G:i');
+
+//Iterator & Iterable Type
+$transactionCollection = new TransactionCollection([
+    new Transaction(10, 'tr1'),
+    new Transaction(20, 'tr2'),
+    new Transaction(30, 'tr3'),
+]);
+foreach ($transactionCollection as $transaction) {
+    echo $transaction->amount . ' - ' . $transaction->description . PHP_EOL;
+}
+
+iterate($transactionCollection);
+iterate([1, 2, 3]);
+
+function iterate(iterable $iterable)
+{
+    foreach ($iterable as $i => $item) {
+        echo $i . PHP_EOL;
+    }
+}

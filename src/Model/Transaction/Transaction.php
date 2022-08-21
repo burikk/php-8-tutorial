@@ -16,7 +16,7 @@ class Transaction
 //        $this->description = $description;
 //    }
     //shorthand constructor
-    public function __construct(private float $amount, private string $description)
+    public function __construct(public float $amount, public string $description)
     {
     }
 
