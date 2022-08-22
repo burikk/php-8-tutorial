@@ -1,6 +1,6 @@
 <?php
 
-use App\Home;
+use App\Controller\HomeController;
 use App\Router;
 
 //spl_autoload_register(function ($class) {
@@ -8,11 +8,13 @@ use App\Router;
 //
 //    require($path);
 //});
-require __DIR__ . '/../vendor/autoload.php';
+
+require_once __DIR__ . '/../vendor/autoload.php';
+const VIEW_PATH = __DIR__ . '/../views';
 
 $router = new Router();
 
-$router->get('/', [Home::class, 'index'])
+$router->get('/', [HomeController::class, 'index'])
     ->get('/about', function () {
         echo 'This is PHP8 tutorial';
     })
@@ -23,4 +25,4 @@ $router->get('/', [Home::class, 'index'])
         require __DIR__ . '/../src/section2.php';
     });
 
-$router->resolve($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+echo $router->resolve($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
