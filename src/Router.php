@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App;
 
+use App\Exception\RouteNotFoundException;
+
 class Router
 {
     private array $routes;
@@ -31,7 +33,7 @@ class Router
         $action = $this->routes[$requestMethod][$route] ?? null;
 
         if (! $action) {
-            throw new \Exception('Route not found');
+            throw new RouteNotFoundException('404 Not Found');
         }
 
         if (is_callable($action)) {
@@ -50,6 +52,6 @@ class Router
             }
         }
 
-        throw new \Exception('Route not found');
+        throw new RouteNotFoundException('404 Not Found');
     }
 }

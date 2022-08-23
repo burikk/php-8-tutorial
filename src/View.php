@@ -18,7 +18,6 @@ class View
     public function render(): string
     {
         $path = VIEW_PATH . '/' . $this->view;
-
         if (! file_exists($path)) {
             throw new \Exception('View not found');
         }
