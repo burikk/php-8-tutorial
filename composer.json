@@ -1,0 +1,19 @@
+{
+  "name": "php8/php-8-tutorial",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Oleksandr Burkotenko",
+      "email": "burkotenko.s@gmail.com"
+    }
+  ],
+  "require": {
+    "ramsey/uuid": "^4.4",
+    "vlucas/phpdotenv": "^5.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  }
+}

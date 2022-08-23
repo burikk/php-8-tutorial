@@ -1,15 +1,15 @@
 version: '3.8'
 
 services:
-  app:
+  php-fpm:
     build:
       context: ./docker
       dockerfile: Dockerfile
-    container_name: app-container
+    container_name: php-fpm
     restart: always
     working_dir: /var/www/
     volumes:
-      - ./src:/var/www
+      - .:/var/www
   nginx:
     image: nginx:1.19-alpine
     container_name: nginx-container
@@ -17,5 +17,18 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./src:/var/www
+      - .:/var/www
       - ./docker/nginx:/etc/nginx/conf.d
+  db:
+    container_name: db
+    image: mysql:8.0
+    volumes:
+      - ./storage/mysql:/var/lib/mysql
+    restart: always
+    environment:
+      - "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"
+      - "MYSQL_DATABASE=${MYSQL_DATABASE}"
+      - "MYSQL_USER=${MYSQL_USER}"
+      - "MYSQL_PASSWORD=${MYSQL_PASSWORD}"
+    ports:
+      - "3306:3306"
