@@ -4,14 +4,31 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\App;
+use App\Model\Invoice;
+use App\Model\SignInvoice;
+use App\Model\User;
 use App\View;
 
 class HomeController
 {
     public function index(): View
     {
-        $db = App::db();
-        return View::make('index.php');
+        $email = uniqid('email@mail.com');
+        $name = 'Banana Bond';
+        $amount = 1000;
+        $userModel = new User();
+        $invoiceModel = new Invoice();
+
+        $invoiceId = (new SignInvoice($userModel, $invoiceModel))->register(
+            [
+                'email' => $email,
+                'name' => $name,
+            ],
+            [
+                'amount' => $amount,
+            ]
+        );
+
+        return View::make('index.php', ['invoice' => $invoiceModel->find($invoiceId)]);
     }
 }
