@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\App;
+use App\Container;
 use App\Model\Invoice;
 use App\Model\SignInvoice;
 use App\Model\User;
@@ -13,6 +13,10 @@ use App\View;
 
 class HomeController
 {
+    public function __construct(private InvoiceService $invoiceService)
+    {
+    }
+
     public function index(): View
     {
         $email = uniqid('email@mail.com');
@@ -30,7 +34,8 @@ class HomeController
                 'amount' => $amount,
             ]
         );
-        App::$container->get(InvoiceService::class)->process([], 25);
+
+        $this->invoiceService->process([], 25);
         return View::make('index.php', ['invoice' => $invoiceModel->find($invoiceId)]);
     }
 }
