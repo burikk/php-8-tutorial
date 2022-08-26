@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\App;
 use App\Model\Invoice;
 use App\Model\SignInvoice;
 use App\Model\User;
+use App\Services\InvoiceService;
 use App\View;
 
 class HomeController
@@ -28,7 +30,7 @@ class HomeController
                 'amount' => $amount,
             ]
         );
-
+        App::$container->get(InvoiceService::class)->process([], 25);
         return View::make('index.php', ['invoice' => $invoiceModel->find($invoiceId)]);
     }
 }
