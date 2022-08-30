@@ -3,6 +3,7 @@
 use App\App;
 use App\Container;
 use App\Controller\HomeController;
+use App\Controller\UserController;
 use App\Router;
 
 //spl_autoload_register(function ($class) {
@@ -19,6 +20,8 @@ const VIEW_PATH = __DIR__ . '/../views';
 $container = new Container();
 $router = new Router($container);
 $router->get('/', [HomeController::class, 'index'])
+    ->get('/users/create', [UserController::class, 'create'])
+    ->post('/users', [UserController::class, 'register'])
     ->get('/about', function () {
         echo 'This is PHP8 tutorial';
     })
