@@ -10,7 +10,8 @@
   "require": {
     "ramsey/uuid": "^4.4",
     "vlucas/phpdotenv": "^5.4",
-    "psr/container": "^2.0"
+    "psr/container": "^2.0",
+    "symfony/mailer": "^6.1"
   },
   "autoload": {
     "psr-4": {
