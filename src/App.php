@@ -9,6 +9,7 @@ use App\Exception\RouteNotFoundException;
 class App
 {
     private static DB $db;
+
     public function __construct(protected Router $router, protected string $uri, protected string $method)
     {
         static::$db = new DB();
